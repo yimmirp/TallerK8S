@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <NOMBRE DEL POD>
+  labels:
+    app: <LABEL DEL POD>
+spec:
+  containers:
+  - name: <NOMBRE DEL CONTENEDOR>
+    image: <IMAGEN A UTILIZAR>
+    ports:
+    - containerPort: <PUERTO EXPONER>
