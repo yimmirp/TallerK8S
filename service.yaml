@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <NOMBRE DEL DEPLOYMENT>
+  labels:
+    app: <LABEL DEL DEPLOYMENT>
+spec:
+  replicas: <NUMERO DE REPLICAS>
+  selector:
+    matchLabels:
+      app: <LABEL DEL POD>
+  template:
+    metadata:
+      labels:
+        app: <LABEL DEL POD>
+    spec:
+      containers:
+      - name: <NOMBRE DEL CONTENEDOR>
+        image: <IMAGEN A UTILIZAR>
+        ports:
+        - containerPort: <PUERTO A EXPONER>
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: <NOMBRE DEL SERVICIO>
+spec:
+  type: NodePort
+  selector:
+    app: <LABEL DEPLOYMENT>
+  ports:
+    - protocol: TCP
+      port: <PUERTO DEL SERVICIO>
+      targetPort: <PUERTO DEL CONTENEDOR>
+      nodePort: <PUERTO DEL NODO>
